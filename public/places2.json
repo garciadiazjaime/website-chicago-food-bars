@@ -1,0 +1,130 @@
+[
+  {
+    "name": "Nobody's Darling",
+    "url": "https://www.theworlds50best.com/discovery/Establishments/US/Chicago/Nobodys-Darling.html",
+    "type": "Bar",
+    "address": "1744 W Balmoral Ave, Andersonville, Chicago, Illinois, 60640",
+    "lat": 41.9798546,
+    "lng": -87.6740945
+  },
+  {
+    "name": "Oriole",
+    "url": "https://www.theworlds50best.com/discovery/Establishments/US/Chicago/Oriole.html",
+    "type": "Restaurant",
+    "address": "661 West Walnut Street, West Loop, Chicago, IL 60661",
+    "lat": 41.8860204,
+    "lng": -87.6451405
+  },
+  {
+    "name": "Osito's Tap",
+    "url": "https://www.theworlds50best.com/discovery/Establishments/US/Chicago/Ositos-Tap.html",
+    "type": "Bar",
+    "address": "2553 S. Ridgeway Ave, Little Village, Chicago, Illinois, 60623",
+    "lat": 41.8447067,
+    "lng": -87.71817709999999
+  },
+  {
+    "name": "Queen Mary Tavern",
+    "url": "https://www.theworlds50best.com/discovery/Establishments/US/Chicago/Queen-Mary-Tavern.html",
+    "type": "Bar",
+    "address": "2125 W. Division St., Wicker Park, Chicago, Illinois, 60622",
+    "lat": 41.90284399999999,
+    "lng": -87.6807541
+  },
+  {
+    "name": "Rose Mary",
+    "url": "https://www.theworlds50best.com/discovery/Establishments/US/Chicago/Rose-Mary.html",
+    "type": "Restaurant",
+    "address": "932 W Fulton St, West Loop, Chicago, Illinois, 60607",
+    "lat": 41.8869519,
+    "lng": -87.6511541
+  },
+  {
+    "name": "Smyth",
+    "url": "https://www.theworlds50best.com/discovery/Establishments/US/Chicago/Smyth.html",
+    "type": "Restaurant",
+    "address": "177 North Ada Street 101, Near West Side, Chicago, IL 60607",
+    "lat": 41.885338,
+    "lng": -87.66031799999999
+  },
+  {
+    "name": "Sparrow",
+    "url": "https://www.theworlds50best.com/discovery/Establishments/US/Chicago/Sparrow.html",
+    "type": "Bar",
+    "address": "12 W Elm Street, Gold Coast, Chicago, Illinois, 60610",
+    "lat": 41.9033574,
+    "lng": -87.6290542
+  },
+  {
+    "name": "Sportsman's Club",
+    "url": "https://www.theworlds50best.com/discovery/Establishments/US/Chicago/Sportsmans-Club.html",
+    "type": "Bar",
+    "address": "948 N Western Ave, Humboldt Park, Chicago, Illinois, 60622",
+    "lat": 41.8990027,
+    "lng": -87.68721529999999
+  },
+  {
+    "name": "The Bamboo Room",
+    "url": "https://www.theworlds50best.com/discovery/Establishments/US/Chicago/The-Bamboo-Room.html",
+    "type": "Bar",
+    "address": "435 N Clark Street, River North, Chicago, Illinois, 60654",
+    "lat": 41.890322,
+    "lng": -87.63065089999999
+  },
+  {
+    "name": "The Loyalist",
+    "url": "https://www.theworlds50best.com/discovery/Establishments/US/Chicago/The-Loyalist.html",
+    "type": "Restaurant",
+    "address": "177 North Ada Street, Near West Side, Chicago, IL 60607",
+    "lat": 41.8852146,
+    "lng": -87.6605529
+  },
+  {
+    "name": "The Peninsula Chicago",
+    "url": "https://www.theworlds50best.com/discovery/Establishments/US/Chicago/The-Peninsula-Chicago.html",
+    "type": "Hotel",
+    "address": "108 E Superior St, Magnificent Mile, Chicago, Illinois, 60611",
+    "lat": 41.8959833,
+    "lng": -87.6250762
+  },
+  {
+    "name": "The Violet Hour",
+    "url": "https://www.theworlds50best.com/discovery/Establishments/US/Chicago/The-Violet-Hour.html",
+    "type": "Bar",
+    "address": "1520 N Damen Ave, Wicker Park, Chicago, Illinois, 60622",
+    "lat": 41.9090324,
+    "lng": -87.67777009999999
+  },
+  {
+    "name": "Three Dots and a Dash",
+    "url": "https://www.theworlds50best.com/discovery/Establishments/US/Chicago/Three-Dots-and-a-Dash.html",
+    "type": "Bar",
+    "address": "435 N Clark St, River North, Chicago, Illinois, IL 60654",
+    "lat": 41.890322,
+    "lng": -87.63065089999999
+  },
+  {
+    "name": "Topolobampo",
+    "url": "https://www.theworlds50best.com/discovery/Establishments/US/Chicago/Topolobampo.html",
+    "type": "Restaurant",
+    "address": "445 North Clark Street, River North, Chicago, IL 60654",
+    "lat": 41.8905226,
+    "lng": -87.6307834
+  },
+  {
+    "name": "Tzuco",
+    "url": "https://www.theworlds50best.com/discovery/Establishments/US/Chicago/Tzuco.html",
+    "type": "Restaurant",
+    "address": "720 N State St, River North, Chicago, Illinois , IL 60654",
+    "lat": 41.8954119,
+    "lng": -87.6284285
+  },
+  {
+    "name": "Virtue",
+    "url": "https://www.theworlds50best.com/discovery/Establishments/US/Chicago/Virtue.html",
+    "type": "Restaurant",
+    "address": "1462 E 53rd St, Hyde Park, Chicago, Illinois , IL 60615",
+    "lat": 41.7996893,
+    "lng": -87.5892843
+  }
+]
