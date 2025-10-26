@@ -78,9 +78,9 @@ export default function LocationButton({ onLocationFound }: LocationButtonProps)
             >
                 {isLoading ? (
                     <>
-                        <span style={{ 
-                            width: "16px", 
-                            height: "16px", 
+                        <span style={{
+                            width: "16px",
+                            height: "16px",
                             border: "2px solid #fff",
                             borderTop: "2px solid transparent",
                             borderRadius: "50%",
