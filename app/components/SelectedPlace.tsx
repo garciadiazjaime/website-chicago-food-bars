@@ -1,19 +1,27 @@
-import { Place } from "@/app/support/types";
+"use client";
 
-export default function SelectedPlace(props: {
-    place: Place;
-    onCloseClicked: (event: React.MouseEvent<HTMLButtonElement>) => void;
-}) {
-    const { place, onCloseClicked } = props;
+import { useSelectedPlace } from "@/app/contexts/SelectedPlaceContext";
+
+export default function SelectedPlace() {
+    const { selectedPlace, clearSelectedPlace } = useSelectedPlace();
+
+    if (!selectedPlace) {
+        return null;
+    }
 
     const openGoogleMapsHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.stopPropagation();
-        const url = `https://www.google.com/maps?q=${place.lat},${place.lng}`;
+        const url = `https://www.google.com/maps?q=${selectedPlace.lat},${selectedPlace.lng}`;
         window.open(url, "_blank");
     };
 
     const placeClickHandler = () => {
-        window.open(place.url, "_blank");
+        window.open(selectedPlace.url, "_blank");
+    };
+
+    const handleCloseClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.stopPropagation();
+        clearSelectedPlace();
     };
 
     return (
@@ -52,7 +60,7 @@ export default function SelectedPlace(props: {
                             lineHeight: "1.3",
                         }}
                     >
-                        {place.name}
+                        {selectedPlace.name}
                     </h3>
                     <p
                         style={{
@@ -62,22 +70,22 @@ export default function SelectedPlace(props: {
                             lineHeight: "1.4",
                         }}
                     >
-                        {place.address}
+                        {selectedPlace.address}
                     </p>
                     <span
                         style={{
                             display: "inline-block",
                             padding: "8px 12px",
                             backgroundColor:
-                                place.type === "restaurant"
+                                selectedPlace.type === "restaurant"
                                     ? "#e8f5e8"
-                                    : place.type === "bar"
+                                    : selectedPlace.type === "bar"
                                         ? "#fff3e0"
                                         : "#e3f2fd",
                             color:
-                                place.type === "restaurant"
+                                selectedPlace.type === "restaurant"
                                     ? "#2e7d32"
-                                    : place.type === "bar"
+                                    : selectedPlace.type === "bar"
                                         ? "#f57c00"
                                         : "#1976d2",
                             borderRadius: "8px",
@@ -86,7 +94,7 @@ export default function SelectedPlace(props: {
                             textTransform: "capitalize",
                         }}
                     >
-                        {place.type}
+                        {selectedPlace.type}
                     </span>
                 </div>
                 <div style={{ display: "flex", gap: "8px", flexShrink: 0 }}>
@@ -114,7 +122,7 @@ export default function SelectedPlace(props: {
                         📍
                     </button>
                     <button
-                        onClick={onCloseClicked}
+                        onClick={handleCloseClick}
                         style={{
                             background: "rgba(0, 0, 0, 0.05)",
                             border: "none",

@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import Map from "@/app/components/Map";
+import SelectedPlace from "@/app/components/SelectedPlace";
 
 export default async function Home() {
   // Read the JSON file on the server side
@@ -11,6 +12,7 @@ export default async function Home() {
   return (
     <div style={{ height: "100vh", width: "100vw" }}>
       <Map places={places} />
+      <SelectedPlace />
     </div>
   );
 }
