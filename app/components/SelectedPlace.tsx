@@ -3,10 +3,18 @@ import { Place } from "@/app/support/types";
 export default function SelectedPlace(props: {
     place: Place;
     onCloseClicked: (event: React.MouseEvent<HTMLButtonElement>) => void;
-    onMapsClicked: (event: React.MouseEvent<HTMLButtonElement>, place: Place) => void;
-    onPlaceClicked: (place: Place) => void;
 }) {
-    const { place, onCloseClicked, onMapsClicked, onPlaceClicked } = props;
+    const { place, onCloseClicked } = props;
+
+    const openGoogleMapsHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.stopPropagation();
+        const url = `https://www.google.com/maps?q=${place.lat},${place.lng}`;
+        window.open(url, "_blank");
+    };
+
+    const placeClickHandler = () => {
+        window.open(place.url, "_blank");
+    };
 
     return (
         <div
@@ -24,7 +32,7 @@ export default function SelectedPlace(props: {
                 backdropFilter: "blur(10px)",
                 cursor: "pointer",
             }}
-            onClick={() => onPlaceClicked(place)}
+            onClick={placeClickHandler}
         >
             <div
                 style={{
@@ -83,7 +91,7 @@ export default function SelectedPlace(props: {
                 </div>
                 <div style={{ display: "flex", gap: "8px", flexShrink: 0 }}>
                     <button
-                        onClick={(e) => onMapsClicked(e, place)}
+                        onClick={openGoogleMapsHandler}
                         style={{
                             background: "#4285f4",
                             border: "none",

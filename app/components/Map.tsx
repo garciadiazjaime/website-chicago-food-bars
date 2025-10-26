@@ -19,19 +19,9 @@ export default function Map(props: { places: Place[] }) {
         setSelectedPlace(place);
     };
 
-    const placeClickHandler = (place: Place) => {
-        window.open(place.url, "_blank");
-    };
-
     const placeCloseHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.stopPropagation();
         setSelectedPlace(null);
-    };
-
-    const openGoogleMapsHandler = (event: React.MouseEvent<HTMLButtonElement>, place: Place) => {
-        event.stopPropagation();
-        const url = `https://www.google.com/maps?q=${place.lat},${place.lng}`;
-        window.open(url, "_blank");
     };
 
     return (
@@ -57,7 +47,7 @@ export default function Map(props: { places: Place[] }) {
                 </GoogleMap>
             </LoadScriptNext>
 
-            {selectedPlace && <SelectedPlace place={selectedPlace} onCloseClicked={placeCloseHandler} onMapsClicked={openGoogleMapsHandler} onPlaceClicked={placeClickHandler} />}
+            {selectedPlace && <SelectedPlace place={selectedPlace} onCloseClicked={placeCloseHandler} />}
         </div>
     );
 }
