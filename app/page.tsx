@@ -1,7 +1,6 @@
 import fs from "fs";
 import path from "path";
-import Map from "@/app/components/Map";
-import SelectedPlace from "@/app/components/SelectedPlace";
+import ClientPage from "@/app/components/ClientPage";
 
 export default async function Home() {
   // Read the JSON file on the server side
@@ -9,10 +8,5 @@ export default async function Home() {
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const places = JSON.parse(fileContent);
 
-  return (
-    <div style={{ height: "100vh", width: "100vw" }}>
-      <Map places={places} />
-      <SelectedPlace />
-    </div>
-  );
+  return <ClientPage places={places} />;
 }

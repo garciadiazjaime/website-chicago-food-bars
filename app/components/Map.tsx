@@ -1,16 +1,32 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useImperativeHandle, forwardRef } from "react";
 import { GoogleMap, LoadScriptNext, Marker } from "@react-google-maps/api";
 
 import { useSelectedPlace } from "@/app/contexts/SelectedPlaceContext";
 import { getMarkerIcon } from "@/app/support/icons";
 import { Place } from "@/app/support/types";
 
-export default function Map(props: { places: Place[] }) {
+interface MapRef {
+    centerMap: (lat: number, lng: number) => void;
+}
+
+const Map = forwardRef<MapRef, { places: Place[] }>((props, ref) => {
     const { places } = props;
     const mapRef = useRef<google.maps.Map | null>(null);
     const { selectedPlace, setSelectedPlace } = useSelectedPlace();
+    const [center, setCenter] = useState({ lat: 41.8781, lng: -87.6298 }); // Default to Chicago
+
+    useImperativeHandle(ref, () => ({
+        centerMap: (lat: number, lng: number) => {
+            const newCenter = { lat, lng };
+            setCenter(newCenter);
+            if (mapRef.current) {
+                mapRef.current.panTo(newCenter);
+                mapRef.current.setZoom(14); // Zoom in when centering on user location
+            }
+        }
+    }));
 
     const handleOnLoad = (map: google.maps.Map) => {
         mapRef.current = map;
@@ -28,7 +44,7 @@ export default function Map(props: { places: Place[] }) {
                         width: "100%",
                         height: "100%",
                     }}
-                    center={{ lat: 41.8781, lng: -87.6298 }} // Default to Chicago
+                    center={center}
                     zoom={12}
                     onLoad={handleOnLoad}
                 >
@@ -45,4 +61,9 @@ export default function Map(props: { places: Place[] }) {
             </LoadScriptNext>
         </div>
     );
-}
+});
+
+Map.displayName = 'Map';
+
+export default Map;
+export type { MapRef };
