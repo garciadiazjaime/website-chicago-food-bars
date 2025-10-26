@@ -2,14 +2,15 @@
 
 import { useRef } from "react";
 import { GoogleMap, LoadScriptNext, Marker } from "@react-google-maps/api";
-import { useSelectedPlace } from "@/app/contexts/SelectedPlaceContext";
 
+import { useSelectedPlace } from "@/app/contexts/SelectedPlaceContext";
+import { getMarkerIcon } from "@/app/support/icons";
 import { Place } from "@/app/support/types";
 
 export default function Map(props: { places: Place[] }) {
     const { places } = props;
     const mapRef = useRef<google.maps.Map | null>(null);
-    const { setSelectedPlace } = useSelectedPlace();
+    const { selectedPlace, setSelectedPlace } = useSelectedPlace();
 
     const handleOnLoad = (map: google.maps.Map) => {
         mapRef.current = map;
@@ -37,6 +38,7 @@ export default function Map(props: { places: Place[] }) {
                             position={{ lat: place.lat, lng: place.lng }}
                             title={place.name}
                             onClick={() => markerClickHandler(place)}
+                            icon={getMarkerIcon(selectedPlace?.slug === place.slug)}
                         />
                     ))}
                 </GoogleMap>

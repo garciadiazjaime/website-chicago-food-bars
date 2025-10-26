@@ -5,7 +5,8 @@
         "type": "Restaurant",
         "address": "1723 North Halsted Street, Lincoln Park, Chicago, IL 60614",
         "lat": 41.913435,
-        "lng": -87.6480552
+        "lng": -87.6480552,
+        "slug": "alinea"
     },
     {
         "name": "Avec River North",
@@ -13,7 +14,8 @@
         "type": "Restaurant",
         "address": "141 W Erie St, River North, Chicago, Illinois, 60654",
         "lat": 41.8938571,
-        "lng": -87.6329428
+        "lng": -87.6329428,
+        "slug": "avec-river-north"
     },
     {
         "name": "Aviary",
@@ -21,7 +23,8 @@
         "type": "Bar",
         "address": "955 West Fulton Market, West Loop, Chicago, IL 60607",
         "lat": 41.8865063,
-        "lng": -87.65184430000001
+        "lng": -87.65184430000001,
+        "slug": "aviary"
     },
     {
         "name": "Bar Sótano",
@@ -29,7 +32,8 @@
         "type": "Bar",
         "address": "443 N Clark St., River North, Chicago, Illinois, 60654",
         "lat": 41.890503,
-        "lng": -87.6307889
+        "lng": -87.6307889,
+        "slug": "bar-sotano"
     },
     {
         "name": "Best Intentions",
@@ -37,7 +41,8 @@
         "type": "Bar",
         "address": "3281 W Armitage Ave, Logan Square, Chicago, Illinois, 60647",
         "lat": 41.9171703,
-        "lng": -87.7101271
+        "lng": -87.7101271,
+        "slug": "best-intentions"
     },
     {
         "name": "Billy Sunday",
@@ -45,7 +50,8 @@
         "type": "Bar",
         "address": "3143 W Logan Blvd, Logan Square, Chicago, Illinois, 60647",
         "lat": 41.9278703,
-        "lng": -87.70645160000001
+        "lng": -87.70645160000001,
+        "slug": "billy-sunday"
     },
     {
         "name": "Bisous",
@@ -53,7 +59,8 @@
         "type": "Bar",
         "address": "938 West Fulton Market, Chicago, IL 60607",
         "lat": 41.8869882,
-        "lng": -87.65145539999999
+        "lng": -87.65145539999999,
+        "slug": "bisous"
     },
     {
         "name": "Boka",
@@ -61,7 +68,8 @@
         "type": "Restaurant",
         "address": "1729 North Halsted Street, Lincoln Park, Chicago, IL 60614",
         "lat": 41.9135658,
-        "lng": -87.6479969
+        "lng": -87.6479969,
+        "slug": "boka"
     },
     {
         "name": "Delilah's",
@@ -69,7 +77,8 @@
         "type": "Bar",
         "address": "2771 North Lincoln Avenue, Sheffield & DePaul, Chicago, IL 60614",
         "lat": 41.9323264,
-        "lng": -87.65805519999999
+        "lng": -87.65805519999999,
+        "slug": "delilahs"
     },
     {
         "name": "Elske",
@@ -77,7 +86,8 @@
         "type": "Restaurant",
         "address": "1350 West Randolph Street, Near West Side, Chicago, IL 60607",
         "lat": 41.8844715,
-        "lng": -87.66092499999999
+        "lng": -87.66092499999999,
+        "slug": "elske"
     },
     {
         "name": "Estereo",
@@ -85,7 +95,8 @@
         "type": "Bar",
         "address": "2450 North Milwaukee Avenue, Logan Square, Chicago, Illinois, 60647",
         "lat": 41.9256841,
-        "lng": -87.7021955
+        "lng": -87.7021955,
+        "slug": "estereo"
     },
     {
         "name": "Ever",
@@ -93,7 +104,8 @@
         "type": "Restaurant",
         "address": "1340 W Fulton St, Fulton Market, West Loop, Chicago, Illinois , IL 60607",
         "lat": 41.88693139999999,
-        "lng": -87.6604084
+        "lng": -87.6604084,
+        "slug": "ever"
     },
     {
         "name": "Galit",
@@ -101,7 +113,8 @@
         "type": "Restaurant",
         "address": "2429 N Lincoln Ave, Lincoln Park, Chicago, Illinois , IL 60614",
         "lat": 41.9263409,
-        "lng": -87.64946049999999
+        "lng": -87.64946049999999,
+        "slug": "galit"
     },
     {
         "name": "Kasama",
@@ -109,7 +122,8 @@
         "type": "Restaurant",
         "address": "1001 N Winchester Ave, East Village, Chicago, Illinois , IL 60622",
         "lat": 41.89969929999999,
-        "lng": -87.6756597
+        "lng": -87.6756597,
+        "slug": "kasama"
     },
     {
         "name": "Kumiko",
@@ -117,7 +131,8 @@
         "type": "Bar",
         "address": "630 W Lake St., West Loop, Chicago, Illinois, 60661",
         "lat": 41.8859182,
-        "lng": -87.6440654
+        "lng": -87.6440654,
+        "slug": "kumiko"
     },
     {
         "name": "Meadowlark",
@@ -125,7 +140,8 @@
         "type": "Bar",
         "address": "2812 W Palmer St, Logan Square, Chicago, Illinois, 60647",
         "lat": 41.92181679999999,
-        "lng": -87.6978042
+        "lng": -87.6978042,
+        "slug": "meadowlark"
     },
     {
         "name": "Moneygun",
@@ -133,7 +149,8 @@
         "type": "Bar",
         "address": "660 W Lake Street, West Loop, Chicago, Illinois, 60661",
         "lat": 41.8858416,
-        "lng": -87.64517029999999
+        "lng": -87.64517029999999,
+        "slug": "moneygun"
     },
     {
         "name": "Monteverde",
@@ -141,7 +158,8 @@
         "type": "Restaurant",
         "address": "1020 W Madison St, West Loop, Chicago, Illinois , IL 60607",
         "lat": 41.8818775,
-        "lng": -87.65296830000001
+        "lng": -87.65296830000001,
+        "slug": "monteverde"
     },
     {
         "name": "Next",
@@ -149,7 +167,8 @@
         "type": "Restaurant",
         "address": "953 West Fulton Market, Fulton Market, Chicago, IL 60607",
         "lat": 41.8865669,
-        "lng": -87.6519313
+        "lng": -87.6519313,
+        "slug": "next"
     },
     {
         "name": "Nine Bar",
@@ -157,7 +176,8 @@
         "type": "Bar",
         "address": "216 W Cermak Rd, Chinatown, Chicago, Illinois, 60616",
         "lat": 41.8531757,
-        "lng": -87.6325448
+        "lng": -87.6325448,
+        "slug": "nine-bar"
     },
     {
         "name": "Nobody's Darling",
@@ -165,7 +185,8 @@
         "type": "Bar",
         "address": "1744 W Balmoral Ave, Andersonville, Chicago, Illinois, 60640",
         "lat": 41.9798546,
-        "lng": -87.6740945
+        "lng": -87.6740945,
+        "slug": "nobodys-darling"
     },
     {
         "name": "Oriole",
@@ -173,7 +194,8 @@
         "type": "Restaurant",
         "address": "661 West Walnut Street, West Loop, Chicago, IL 60661",
         "lat": 41.8860204,
-        "lng": -87.6451405
+        "lng": -87.6451405,
+        "slug": "oriole"
     },
     {
         "name": "Osito's Tap",
@@ -181,7 +203,8 @@
         "type": "Bar",
         "address": "2553 S. Ridgeway Ave, Little Village, Chicago, Illinois, 60623",
         "lat": 41.8447067,
-        "lng": -87.71817709999999
+        "lng": -87.71817709999999,
+        "slug": "ositos-tap"
     },
     {
         "name": "Queen Mary Tavern",
@@ -189,7 +212,8 @@
         "type": "Bar",
         "address": "2125 W. Division St., Wicker Park, Chicago, Illinois, 60622",
         "lat": 41.90284399999999,
-        "lng": -87.6807541
+        "lng": -87.6807541,
+        "slug": "queen-mary-tavern"
     },
     {
         "name": "Rose Mary",
@@ -197,7 +221,8 @@
         "type": "Restaurant",
         "address": "932 W Fulton St, West Loop, Chicago, Illinois, 60607",
         "lat": 41.8869519,
-        "lng": -87.6511541
+        "lng": -87.6511541,
+        "slug": "rose-mary"
     },
     {
         "name": "Smyth",
@@ -205,7 +230,8 @@
         "type": "Restaurant",
         "address": "177 North Ada Street 101, Near West Side, Chicago, IL 60607",
         "lat": 41.885338,
-        "lng": -87.66031799999999
+        "lng": -87.66031799999999,
+        "slug": "smyth"
     },
     {
         "name": "Sparrow",
@@ -213,7 +239,8 @@
         "type": "Bar",
         "address": "12 W Elm Street, Gold Coast, Chicago, Illinois, 60610",
         "lat": 41.9033574,
-        "lng": -87.6290542
+        "lng": -87.6290542,
+        "slug": "sparrow"
     },
     {
         "name": "Sportsman's Club",
@@ -221,7 +248,8 @@
         "type": "Bar",
         "address": "948 N Western Ave, Humboldt Park, Chicago, Illinois, 60622",
         "lat": 41.8990027,
-        "lng": -87.68721529999999
+        "lng": -87.68721529999999,
+        "slug": "sportsmans-club"
     },
     {
         "name": "The Bamboo Room",
@@ -229,7 +257,8 @@
         "type": "Bar",
         "address": "435 N Clark Street, River North, Chicago, Illinois, 60654",
         "lat": 41.890322,
-        "lng": -87.63065089999999
+        "lng": -87.63065089999999,
+        "slug": "the-bamboo-room"
     },
     {
         "name": "The Loyalist",
@@ -237,7 +266,8 @@
         "type": "Restaurant",
         "address": "177 North Ada Street, Near West Side, Chicago, IL 60607",
         "lat": 41.8852146,
-        "lng": -87.6605529
+        "lng": -87.6605529,
+        "slug": "the-loyalist"
     },
     {
         "name": "The Peninsula Chicago",
@@ -245,7 +275,8 @@
         "type": "Hotel",
         "address": "108 E Superior St, Magnificent Mile, Chicago, Illinois, 60611",
         "lat": 41.8959833,
-        "lng": -87.6250762
+        "lng": -87.6250762,
+        "slug": "the-peninsula-chicago"
     },
     {
         "name": "The Violet Hour",
@@ -253,7 +284,8 @@
         "type": "Bar",
         "address": "1520 N Damen Ave, Wicker Park, Chicago, Illinois, 60622",
         "lat": 41.9090324,
-        "lng": -87.67777009999999
+        "lng": -87.67777009999999,
+        "slug": "the-violet-hour"
     },
     {
         "name": "Three Dots and a Dash",
@@ -261,7 +293,8 @@
         "type": "Bar",
         "address": "435 N Clark St, River North, Chicago, Illinois, IL 60654",
         "lat": 41.890322,
-        "lng": -87.63065089999999
+        "lng": -87.63065089999999,
+        "slug": "three-dots-and-a-dash"
     },
     {
         "name": "Topolobampo",
@@ -269,7 +302,8 @@
         "type": "Restaurant",
         "address": "445 North Clark Street, River North, Chicago, IL 60654",
         "lat": 41.8905226,
-        "lng": -87.6307834
+        "lng": -87.6307834,
+        "slug": "topolobampo"
     },
     {
         "name": "Tzuco",
@@ -277,7 +311,8 @@
         "type": "Restaurant",
         "address": "720 N State St, River North, Chicago, Illinois , IL 60654",
         "lat": 41.8954119,
-        "lng": -87.6284285
+        "lng": -87.6284285,
+        "slug": "tzuco"
     },
     {
         "name": "Virtue",
@@ -285,6 +320,7 @@
         "type": "Restaurant",
         "address": "1462 E 53rd St, Hyde Park, Chicago, Illinois , IL 60615",
         "lat": 41.7996893,
-        "lng": -87.5892843
+        "lng": -87.5892843,
+        "slug": "virtue"
     }
 ]
