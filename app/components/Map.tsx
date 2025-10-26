@@ -1,22 +1,37 @@
 "use client";
 
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useState } from "react";
 import { GoogleMap, LoadScriptNext, Marker } from "@react-google-maps/api";
+import SelectedPlace from "@/app/components/SelectedPlace";
 
 import { Place } from "@/app/support/types";
-
 
 export default function Map(props: { places: Place[] }) {
     const { places } = props;
     const mapRef = useRef<google.maps.Map | null>(null);
-
+    const [selectedPlace, setSelectedPlace] = useState<Place | null>(null);
 
     const handleOnLoad = (map: google.maps.Map) => {
         mapRef.current = map;
     };
 
     const markerClickHandler = (place: Place) => {
+        setSelectedPlace(place);
+    };
+
+    const placeClickHandler = (place: Place) => {
         window.open(place.url, "_blank");
+    };
+
+    const placeCloseHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.stopPropagation();
+        setSelectedPlace(null);
+    };
+
+    const openGoogleMapsHandler = (event: React.MouseEvent<HTMLButtonElement>, place: Place) => {
+        event.stopPropagation();
+        const url = `https://www.google.com/maps?q=${place.lat},${place.lng}`;
+        window.open(url, "_blank");
     };
 
     return (
@@ -41,6 +56,8 @@ export default function Map(props: { places: Place[] }) {
                     ))}
                 </GoogleMap>
             </LoadScriptNext>
+
+            {selectedPlace && <SelectedPlace place={selectedPlace} onCloseClicked={placeCloseHandler} onMapsClicked={openGoogleMapsHandler} onPlaceClicked={placeClickHandler} />}
         </div>
     );
-};
+}

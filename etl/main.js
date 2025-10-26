@@ -4,6 +4,7 @@ const fs = require("fs");
 
 require("dotenv").config();
 
+// https://www.theworlds50best.com/discovery/sitemap/us/chicago
 const host = "https://www.theworlds50best.com";
 const GOOGLE_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS;
 
