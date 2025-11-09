@@ -6,7 +6,7 @@ require("dotenv").config();
 
 // https://www.theworlds50best.com/discovery/sitemap/us/chicago
 const host = "https://www.theworlds50best.com";
-const GOOGLE_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS;
+const GOOGLE_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_ETL;
 
 const places = [];
 
@@ -37,10 +37,19 @@ function transform(html) {
     const type = $(element).find("p").first().text().trim();
     const url = `${host}${$(element).find("a").attr("href")}`;
 
+    const slug = name
+      .toLowerCase()
+      .replace(/&/g, "and")
+      .replace(/[^a-z0-9\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-|-$/g, "");
+
     places.push({
       name,
       type,
       url,
+      slug,
     });
   });
 
@@ -53,8 +62,17 @@ async function getCoordinatesFromAddress(address) {
   )}&key=${GOOGLE_API_KEY}`;
 
   try {
+    loggerInfo("Fetching coordinates for address:", { url });
     const response = await fetch(url);
     const data = await response.json();
+
+    if (data.status !== "OK" || data.results.length === 0) {
+      loggerInfo("No results found for address:", {
+        address,
+        error: data.error_message,
+      });
+      return {};
+    }
 
     const location = data.results[0].geometry.location;
     return {
@@ -73,6 +91,10 @@ async function transformSinglePlace(html, place) {
   const address = $(details).find(".location").text().trim();
   const coordinates = await getCoordinatesFromAddress(address);
 
+  if (!coordinates.lat || !coordinates.lng) {
+    return;
+  }
+
   places.push({
     name: place.name,
     url: place.url,
@@ -80,6 +102,7 @@ async function transformSinglePlace(html, place) {
     address,
     lat: coordinates.lat,
     lng: coordinates.lng,
+    slug: place.slug,
   });
 }
 
