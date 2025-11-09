@@ -129,7 +129,7 @@
         "name": "Kumiko",
         "url": "https://www.theworlds50best.com/discovery/Establishments/US/Chicago/Kumiko.html",
         "type": "Bar",
-        "address": "630 W Lake St., West Loop, Chicago, Illinois, 60661",
+        "address": "630 W Lake St, Fulton River District, Chicago, Illinois, IL 60661",
         "lat": 41.8859182,
         "lng": -87.6440654,
         "slug": "kumiko"
@@ -157,8 +157,8 @@
         "url": "https://www.theworlds50best.com/discovery/Establishments/US/Chicago/Monteverde.html",
         "type": "Restaurant",
         "address": "1020 W Madison St, West Loop, Chicago, Illinois , IL 60607",
-        "lat": 41.8818775,
-        "lng": -87.65296830000001,
+        "lat": 41.8818014,
+        "lng": -87.6530624,
         "slug": "monteverde"
     },
     {
@@ -265,8 +265,8 @@
         "url": "https://www.theworlds50best.com/discovery/Establishments/US/Chicago/The-Loyalist.html",
         "type": "Restaurant",
         "address": "177 North Ada Street, Near West Side, Chicago, IL 60607",
-        "lat": 41.8852146,
-        "lng": -87.6605529,
+        "lat": 41.8849254,
+        "lng": -87.66036849999999,
         "slug": "the-loyalist"
     },
     {
