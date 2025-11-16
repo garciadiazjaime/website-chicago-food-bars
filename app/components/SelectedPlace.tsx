@@ -1,12 +1,44 @@
 "use client";
 
 import { useSelectedPlace } from "@/app/contexts/SelectedPlaceContext";
-import { useEffect, useRef } from "react";
+import { useEmail } from "@/app/components/EmailProvider";
+import { useEffect, useRef, useState } from "react";
 
 export default function SelectedPlace() {
     const { selectedPlace, clearSelectedPlace } = useSelectedPlace();
+    const { userEmail } = useEmail();
     const panelRef = useRef<HTMLDivElement>(null);
     const justMountedRef = useRef(true);
+    const [visitedPlaces, setVisitedPlaces] = useState<{ [slug: string]: boolean }>({});
+
+    // Load visited places from localStorage
+    useEffect(() => {
+        if (userEmail) {
+            const saved = localStorage.getItem(`visitedPlaces_${userEmail}`);
+            if (saved) {
+                try {
+                    setVisitedPlaces(JSON.parse(saved));
+                } catch (error) {
+                    console.error('Error loading visited places:', error);
+                    setVisitedPlaces({});
+                }
+            }
+        } else {
+            setVisitedPlaces({});
+        }
+    }, [userEmail]);
+
+    const toggleVisited = (slug: string) => {
+        if (!userEmail) return;
+
+        const newVisitedPlaces = {
+            ...visitedPlaces,
+            [slug]: !visitedPlaces[slug]
+        };
+
+        setVisitedPlaces(newVisitedPlaces);
+        localStorage.setItem(`visitedPlaces_${userEmail}`, JSON.stringify(newVisitedPlaces));
+    };
 
     useEffect(() => {
         if (selectedPlace) {
@@ -123,6 +155,35 @@ export default function SelectedPlace() {
                     </span>
                 </div>
                 <div style={{ display: "flex", gap: "8px", flexShrink: 0 }}>
+                    {userEmail && (
+                        <button
+                            onClick={(event) => {
+                                event.stopPropagation();
+                                toggleVisited(selectedPlace.slug);
+                            }}
+                            style={{
+                                background: visitedPlaces[selectedPlace.slug] ? "#4caf50" : "#f5f5f5",
+                                border: "1px solid #ddd",
+                                fontSize: "16px",
+                                cursor: "pointer",
+                                color: visitedPlaces[selectedPlace.slug] ? "white" : "#333",
+                                padding: "12px",
+                                borderRadius: "12px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                minWidth: "48px",
+                                minHeight: "48px",
+                                zIndex: 1001,
+                                flexShrink: 0,
+                                fontWeight: "500",
+                                transition: "all 0.2s ease",
+                            }}
+                            title={visitedPlaces[selectedPlace.slug] ? "Mark as not visited" : "Mark as visited"}
+                        >
+                            {visitedPlaces[selectedPlace.slug] ? "✓" : "○"}
+                        </button>
+                    )}
                     <button
                         onClick={openGoogleMapsHandler}
                         style={{
