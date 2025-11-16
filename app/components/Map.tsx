@@ -54,7 +54,7 @@ const Map = forwardRef<MapRef, { places: Place[] }>((props, ref) => {
                             position={{ lat: place.lat, lng: place.lng }}
                             title={place.name}
                             onClick={() => markerClickHandler(place)}
-                            icon={getMarkerIcon(selectedPlace?.slug === place.slug)}
+                            icon={getMarkerIcon(selectedPlace?.slug === place.slug, place.slug)}
                         />
                     ))}
                 </GoogleMap>
