@@ -56,8 +56,8 @@ export default function LocationButton({ onLocationFound }: LocationButtonProps)
                 disabled={isLoading}
                 style={{
                     position: "fixed",
-                    top: "20px",
-                    right: "20px",
+                    top: "130px",
+                    right: "10px",
                     backgroundColor: isLoading ? "#ccc" : "#4285f4",
                     border: "none",
                     borderRadius: "12px",
@@ -100,8 +100,8 @@ export default function LocationButton({ onLocationFound }: LocationButtonProps)
                 <div
                     style={{
                         position: "fixed",
-                        top: "80px",
-                        right: "20px",
+                        top: "130px",
+                        right: "10px",
                         backgroundColor: "#ff4444",
                         color: "white",
                         padding: "12px 16px",

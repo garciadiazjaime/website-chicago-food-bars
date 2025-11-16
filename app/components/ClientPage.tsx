@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Map, { MapRef } from "@/app/components/Map";
 import LocationButton from "@/app/components/LocationButton";
 import SelectedPlace from "@/app/components/SelectedPlace";
+import EmailProvider from "@/app/components/EmailProvider";
 import { Place } from "@/app/support/types";
 
 interface ClientPageProps {
@@ -20,10 +21,12 @@ export default function ClientPage({ places }: ClientPageProps) {
     };
 
     return (
-        <div style={{ height: "100vh", width: "100vw" }}>
-            <Map ref={mapRef} places={places} />
-            <LocationButton onLocationFound={handleLocationFound} />
-            <SelectedPlace />
-        </div>
+        <EmailProvider>
+            <div style={{ height: "100vh", width: "100vw" }}>
+                <Map ref={mapRef} places={places} />
+                <LocationButton onLocationFound={handleLocationFound} />
+                <SelectedPlace />
+            </div>
+        </EmailProvider>
     );
 }
