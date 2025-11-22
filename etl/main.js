@@ -10,6 +10,8 @@ const GOOGLE_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_ETL;
 
 const places = [];
 
+const waitFor = (ms = 300) => new Promise((resolve) => setTimeout(resolve, ms));
+
 async function extract(url) {
   loggerInfo("Extracting URL:", { url });
   const browser = await puppeteer.launch();
@@ -36,6 +38,7 @@ function transform(html) {
     const name = $(element).find("h2").text().trim();
     const type = $(element).find("p").first().text().trim();
     const url = `${host}${$(element).find("a").attr("href")}`;
+    const image = `https:${$(element).find("img").attr("src")}`;
 
     const slug = name
       .toLowerCase()
@@ -52,6 +55,7 @@ function transform(html) {
       type,
       url,
       slug,
+      image,
     });
   });
 
@@ -97,28 +101,26 @@ async function transformSinglePlace(html, place) {
     return;
   }
 
-  places.push({
-    name: place.name,
-    url: place.url,
-    type: place.type,
+  return {
     address,
     lat: coordinates.lat,
     lng: coordinates.lng,
-    slug: place.slug,
-  });
+  };
 }
 
 async function ETLSinglePlace(place) {
   loggerInfo("ETL for place:", { name: place.name });
 
   const html = await extract(place.url);
-  await transformSinglePlace(html, place);
+  const details = await transformSinglePlace(html, place);
+
+  return details;
 }
 
-async function load() {
+async function load(index) {
   try {
     fs.writeFileSync(
-      "public/places.json",
+      `public/places.${index}.json`,
       JSON.stringify(places, null, 2),
       "utf-8"
     );
@@ -128,21 +130,48 @@ async function load() {
   }
 }
 
-async function main() {
-  const url = `${host}/discovery/sitemap/us/chicago`;
-  //   const url = `${host}/discovery/sitemap/us/chicago?offset=20`;
+async function ETL(url, index) {
   const html = await extract(url);
 
   const placesFromHomePage = transform(html);
 
-  for (const item of placesFromHomePage) {
-    loggerInfo("Processing item:", item);
-    await ETLSinglePlace(item);
+  for (const place of placesFromHomePage) {
+    loggerInfo("Processing item:", place);
+    const details = await ETLSinglePlace(place);
 
-    await new Promise((resolve) => setTimeout(resolve, 1_000));
+    if (!details) {
+      loggerInfo("Skipping place due to missing details:", place);
+      continue;
+    }
+
+    places.push({
+      name: place.name,
+      url: place.url,
+      type: place.type,
+      address: details.address,
+      lat: details.lat,
+      lng: details.lng,
+      slug: place.slug,
+      image: place.image,
+    });
+
+    await waitFor();
   }
 
-  await load();
+  await load(index);
+}
+
+async function main() {
+  const urls = [
+    `${host}/discovery/sitemap/us/chicago`,
+    `${host}/discovery/sitemap/us/chicago?offset=20`,
+  ];
+
+  for (const [index, url] of urls.entries()) {
+    await ETL(url, index);
+
+    await waitFor();
+  }
 }
 
 function loggerInfo(msg, metadata) {

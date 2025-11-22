@@ -6,7 +6,8 @@
     "address": "1723 North Halsted Street, Lincoln Park, Chicago, IL 60614",
     "lat": 41.913435,
     "lng": -87.6480552,
-    "slug": "alinea"
+    "slug": "alinea",
+    "image": "https://www.theworlds50best.com/discovery/filestore/jpg/Alinea-Chicago-USA-Teaser.jpg"
   },
   {
     "name": "Avec River North",
@@ -15,7 +16,8 @@
     "address": "141 W Erie St, River North, Chicago, Illinois, 60654",
     "lat": 41.8938571,
     "lng": -87.6329428,
-    "slug": "avec-river-north"
+    "slug": "avec-river-north",
+    "image": "https://www.theworlds50best.com/discovery/filestore/jpg/Avec River North_interior - teaser.jpg"
   },
   {
     "name": "Aviary",
@@ -24,7 +26,8 @@
     "address": "955 West Fulton Market, West Loop, Chicago, IL 60607",
     "lat": 41.8865063,
     "lng": -87.65184430000001,
-    "slug": "aviary"
+    "slug": "aviary",
+    "image": "https://www.theworlds50best.com/discovery/filestore/jpg/bar-awaiting-7-teaser.jpg"
   },
   {
     "name": "Bar Sótano",
@@ -33,7 +36,8 @@
     "address": "443 N Clark St., River North, Chicago, Illinois, 60654",
     "lat": 41.890503,
     "lng": -87.6307889,
-    "slug": "bar-stano"
+    "slug": "bar-sotano",
+    "image": "https://www.theworlds50best.com/discovery/filestore/jpg/BAR SOTANO_teaser.jpg"
   },
   {
     "name": "Best Intentions",
@@ -42,7 +46,8 @@
     "address": "3281 W Armitage Ave, Logan Square, Chicago, Illinois, 60647",
     "lat": 41.9171703,
     "lng": -87.7101271,
-    "slug": "best-intentions"
+    "slug": "best-intentions",
+    "image": "https://www.theworlds50best.com/discovery/filestore/jpg/BEST INTENTIONS_teaser.jpg"
   },
   {
     "name": "Billy Sunday",
@@ -51,7 +56,8 @@
     "address": "3143 W Logan Blvd, Logan Square, Chicago, Illinois, 60647",
     "lat": 41.9278703,
     "lng": -87.70645160000001,
-    "slug": "billy-sunday"
+    "slug": "billy-sunday",
+    "image": "https://www.theworlds50best.com/discovery/filestore/jpg/zz.bar-awaiting-1-teaser.jpg"
   },
   {
     "name": "Bisous",
@@ -60,7 +66,8 @@
     "address": "938 West Fulton Market, Chicago, IL 60607",
     "lat": 41.8869882,
     "lng": -87.65145539999999,
-    "slug": "bisous"
+    "slug": "bisous",
+    "image": "https://www.theworlds50best.com/discovery/filestore/jpeg/Bisous Table Top FRENCH 75  - Just Coast-teaser.jpeg"
   },
   {
     "name": "Boka",
@@ -69,7 +76,8 @@
     "address": "1729 North Halsted Street, Lincoln Park, Chicago, IL 60614",
     "lat": 41.9135658,
     "lng": -87.6479969,
-    "slug": "boka"
+    "slug": "boka",
+    "image": "https://www.theworlds50best.com/discovery/filestore/jpg/Boka-Chicago-USA-01.jpg"
   },
   {
     "name": "Delilah's",
@@ -78,7 +86,8 @@
     "address": "2771 North Lincoln Avenue, Sheffield & DePaul, Chicago, IL 60614",
     "lat": 41.9323264,
     "lng": -87.65805519999999,
-    "slug": "delilahs"
+    "slug": "delilahs",
+    "image": "https://www.theworlds50best.com/discovery/filestore/jpg/bar-awaiting-1-teaser.jpg"
   },
   {
     "name": "Elske",
@@ -87,7 +96,8 @@
     "address": "1350 West Randolph Street, Near West Side, Chicago, IL 60607",
     "lat": 41.8844715,
     "lng": -87.66092499999999,
-    "slug": "elske"
+    "slug": "elske",
+    "image": "https://www.theworlds50best.com/discovery/filestore/jpg/Elske-Chicago-USA-02 - teaser.jpg"
   },
   {
     "name": "Estereo",
@@ -96,7 +106,8 @@
     "address": "2450 North Milwaukee Avenue, Logan Square, Chicago, Illinois, 60647",
     "lat": 41.9256841,
     "lng": -87.7021955,
-    "slug": "estereo"
+    "slug": "estereo",
+    "image": "https://www.theworlds50best.com/discovery/filestore/jpg/Estereo-Chicago-Illinois-2.jpg"
   },
   {
     "name": "Ever",
@@ -105,7 +116,8 @@
     "address": "1340 W Fulton St, Fulton Market, West Loop, Chicago, Illinois , IL 60607",
     "lat": 41.88693139999999,
     "lng": -87.6604084,
-    "slug": "ever"
+    "slug": "ever",
+    "image": "https://www.theworlds50best.com/discovery/filestore/jpg/Ever_Teaser.jpg"
   },
   {
     "name": "Galit",
@@ -114,7 +126,8 @@
     "address": "2429 N Lincoln Ave, Lincoln Park, Chicago, Illinois , IL 60614",
     "lat": 41.9263409,
     "lng": -87.64946049999999,
-    "slug": "galit"
+    "slug": "galit",
+    "image": "https://www.theworlds50best.com/discovery/filestore/jpeg/Galit_Teaser.jpeg"
   },
   {
     "name": "Kasama",
@@ -123,7 +136,8 @@
     "address": "1001 N Winchester Ave, East Village, Chicago, Illinois , IL 60622",
     "lat": 41.89969929999999,
     "lng": -87.6756597,
-    "slug": "kasama"
+    "slug": "kasama",
+    "image": "https://www.theworlds50best.com/discovery/filestore/jpg/restaurant-awaiting-7-teaser.jpg"
   },
   {
     "name": "Kumiko",
@@ -132,7 +146,8 @@
     "address": "630 W Lake St, Fulton River District, Chicago, Illinois, IL 60661",
     "lat": 41.8859182,
     "lng": -87.6440654,
-    "slug": "kumiko"
+    "slug": "kumiko",
+    "image": "https://www.theworlds50best.com/discovery/filestore/jpg/Kumiko-Chicago-Illinois-1.jpg"
   },
   {
     "name": "Meadowlark",
@@ -141,7 +156,8 @@
     "address": "2812 W Palmer St, Logan Square, Chicago, Illinois, 60647",
     "lat": 41.92181679999999,
     "lng": -87.6978042,
-    "slug": "meadowlark"
+    "slug": "meadowlark",
+    "image": "https://www.theworlds50best.com/discovery/filestore/jpg/Meadowlark-interior - Copy.jpg"
   },
   {
     "name": "Moneygun",
@@ -150,7 +166,8 @@
     "address": "660 W Lake Street, West Loop, Chicago, Illinois, 60661",
     "lat": 41.8858416,
     "lng": -87.64517029999999,
-    "slug": "moneygun"
+    "slug": "moneygun",
+    "image": "https://www.theworlds50best.com/discovery/filestore/jpg/bar-awaiting-1-teaser.jpg"
   },
   {
     "name": "Monteverde",
@@ -159,7 +176,8 @@
     "address": "1020 W Madison St, West Loop, Chicago, Illinois , IL 60607",
     "lat": 41.8818014,
     "lng": -87.6530624,
-    "slug": "monteverde"
+    "slug": "monteverde",
+    "image": "https://www.theworlds50best.com/discovery/filestore/jpg/restaurant-awaiting-7-teaser.jpg"
   },
   {
     "name": "Next",
@@ -168,7 +186,8 @@
     "address": "953 West Fulton Market, Fulton Market, Chicago, IL 60607",
     "lat": 41.8865669,
     "lng": -87.6519313,
-    "slug": "next"
+    "slug": "next",
+    "image": "https://www.theworlds50best.com/discovery/filestore/jpg/Next-Chicago-USA-02 - teaser.jpg"
   },
   {
     "name": "Nine Bar",
@@ -177,6 +196,7 @@
     "address": "216 W Cermak Rd, Chinatown, Chicago, Illinois, 60616",
     "lat": 41.8531757,
     "lng": -87.6325448,
-    "slug": "nine-bar"
+    "slug": "nine-bar",
+    "image": "https://www.theworlds50best.com/discovery/filestore/jpg/Nine Bar-drink - Copy.jpg"
   }
 ]
