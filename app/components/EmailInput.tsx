@@ -60,34 +60,13 @@ export default function EmailInput({ onEmailSubmitted, onClose }: EmailInputProp
             >
                 ✕
             </button>
-            <h2
-                style={{
-                    margin: "0 0 8px 0",
-                    fontSize: "24px",
-                    fontWeight: "600",
-                    color: "#333",
-                    textAlign: "center",
-                }}
-            >
-                Welcome! 👋
-            </h2>
-            <p
-                style={{
-                    margin: "0 0 24px 0",
-                    fontSize: "16px",
-                    color: "#666",
-                    textAlign: "center",
-                    lineHeight: "1.4",
-                }}
-            >
-                Enter your email to save your favorite places
-            </p>
+            <br /><br />
             <form onSubmit={handleSubmit}>
                 <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="your.email@example.com"
+                    placeholder="email@example.com"
                     required
                     className="email-input"
                     style={{
@@ -119,7 +98,7 @@ export default function EmailInput({ onEmailSubmitted, onClose }: EmailInputProp
                         fontFamily: "inherit",
                     }}
                 >
-                    Get Started
+                    log in
                 </button>
             </form>
 

@@ -1,12 +1,10 @@
 "use client";
 
 import { useSelectedPlace } from "@/app/contexts/SelectedPlaceContext";
-import { useEmail } from "@/app/components/EmailProvider";
 import { useEffect, useRef, useState } from "react";
 
 export default function SelectedPlace() {
-    const { selectedPlace, clearSelectedPlace } = useSelectedPlace();
-    const { userEmail } = useEmail();
+    const { userEmail, selectedPlace, clearSelectedPlace } = useSelectedPlace();
     const panelRef = useRef<HTMLDivElement>(null);
     const justMountedRef = useRef(true);
     const [visitedPlaces, setVisitedPlaces] = useState<{ [slug: string]: boolean }>({});

@@ -8,6 +8,7 @@ import LocationButton from "@/app/components/LocationButton";
 import SelectedPlace from "@/app/components/SelectedPlace";
 import EmailProvider from "@/app/components/EmailProvider";
 import { Place } from "@/app/support/types";
+import Header from "./Header";
 
 interface ClientPageProps {
     places: Place[];
@@ -29,7 +30,10 @@ export default function ClientPage({ places }: ClientPageProps) {
     return (
         <EmailProvider>
             <div style={{ height: "100vh", width: "100vw" }}>
-                <Map ref={mapRef} places={places} />
+                <Header />
+                <div style={{ height: "64vh" }}>
+                    <Map ref={mapRef} places={places} />
+                </div>
                 <LocationButton onLocationFound={handleLocationFound} />
                 <SelectedPlace />
             </div>
