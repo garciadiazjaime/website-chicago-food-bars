@@ -10,19 +10,16 @@ interface EmailProviderProps {
 }
 
 export default function EmailProvider({ children }: EmailProviderProps) {
-    const { showEmailModal, setShowEmailModal, setUserEmailState } = useSelectedPlace();
+    const { showEmailModal, setShowEmailModal, setUserEmail } = useSelectedPlace();
 
-    const setUserEmail = (email: string) => {
-        setUserEmailState(email);
+    const handleEmailSubmitted = (email: string) => {
+        setUserEmail(email);
         if (email) {
             localStorage.setItem("userEmail", email);
         } else {
             localStorage.removeItem("userEmail");
         }
-    };
 
-    const handleEmailSubmitted = (email: string) => {
-        setUserEmail(email);
         setShowEmailModal(false);
     };
 
@@ -48,17 +45,6 @@ export default function EmailProvider({ children }: EmailProviderProps) {
         {children}
 
         {showEmailModal && <EmailInput onEmailSubmitted={handleEmailSubmitted} onClose={handleCloseModal} />}
-
-        <style jsx>{`
-                .sign-in-btn:hover {
-                    background-color: #3367d6 !important;
-                }
-                
-                .sign-off-btn:hover {
-                    background-color: #f5f5f5 !important;
-                    border-color: #999 !important;
-                }
-            `}</style>
     </>
     );
 }

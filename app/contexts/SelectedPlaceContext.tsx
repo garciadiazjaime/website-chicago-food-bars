@@ -9,7 +9,7 @@ interface SelectedPlaceContextType {
     clearSelectedPlace: () => void;
 
     userEmail: string;
-    setUserEmailState: (email: string) => void;
+    setUserEmail: (email: string) => void;
     showEmailModal: boolean;
     setShowEmailModal: (show: boolean) => void;
 }
@@ -18,7 +18,7 @@ const SelectedPlaceContext = createContext<SelectedPlaceContextType | undefined>
 
 export function SelectedPlaceProvider({ children }: { children: ReactNode }) {
     const [selectedPlace, setSelectedPlace] = useState<Place | null>(null);
-    const [userEmail, setUserEmailState] = useState<string>("");
+    const [userEmail, setUserEmail] = useState<string>("");
     const [showEmailModal, setShowEmailModal] = useState<boolean>(false);
 
     const clearSelectedPlace = () => {
@@ -33,7 +33,7 @@ export function SelectedPlaceProvider({ children }: { children: ReactNode }) {
                 clearSelectedPlace,
 
                 userEmail,
-                setUserEmailState,
+                setUserEmail,
                 showEmailModal,
                 setShowEmailModal
             }}

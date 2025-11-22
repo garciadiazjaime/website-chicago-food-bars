@@ -3,17 +3,17 @@ import { useEffect } from "react";
 import { useSelectedPlace } from "@/app/contexts/SelectedPlaceContext";
 
 export default function Header() {
-    const { userEmail, setUserEmailState, setShowEmailModal } = useSelectedPlace();
+    const { userEmail, setUserEmail, setShowEmailModal } = useSelectedPlace();
 
     useEffect(() => {
         const savedEmail = localStorage.getItem("userEmail");
         if (savedEmail) {
-            setUserEmailState(savedEmail);
+            setUserEmail(savedEmail);
         }
     }, []);
 
     const clearEmail = () => {
-        setUserEmailState("");
+        setUserEmail("");
         localStorage.removeItem("userEmail");
     };
 
