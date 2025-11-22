@@ -1,6 +1,8 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import ReactGA from "react-ga4";
+
 import Map, { MapRef } from "@/app/components/Map";
 import LocationButton from "@/app/components/LocationButton";
 import SelectedPlace from "@/app/components/SelectedPlace";
@@ -19,6 +21,10 @@ export default function ClientPage({ places }: ClientPageProps) {
             mapRef.current.centerMap(lat, lng);
         }
     };
+
+    useEffect(() => {
+        ReactGA.initialize("G-RMJYP1YMHE");
+    }, [])
 
     return (
         <EmailProvider>

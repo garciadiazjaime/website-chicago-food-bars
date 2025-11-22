@@ -118,7 +118,7 @@ export default function EmailProvider({ children }: EmailProviderProps) {
                 <div
                     style={{
                         position: "fixed",
-                        top: "20px",
+                        top: 70,
                         right: "20px",
                         backgroundColor: "rgba(255, 255, 255, 0.95)",
                         padding: "12px 16px",
