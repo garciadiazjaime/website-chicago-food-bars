@@ -31,7 +31,7 @@ export default function ClientPage({ places }: ClientPageProps) {
         <div style={{ height: "100vh", width: "100vw" }}>
             <LoginModal />
             <Header />
-            <div style={{ height: "64vh" }}>
+            <div style={{ height: "66vh" }}>
                 <Map ref={mapRef} places={places} />
             </div>
             <LocationButton onLocationFound={handleLocationFound} />

@@ -6,4 +6,5 @@ export interface Place {
   lng: number;
   address: string;
   slug: string;
+  image: string;
 }

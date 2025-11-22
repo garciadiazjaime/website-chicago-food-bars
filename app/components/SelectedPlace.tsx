@@ -1,5 +1,3 @@
-"use client";
-
 import { useSelectedPlace } from "@/app/contexts/SelectedPlaceContext";
 import { useEffect, useRef, useState } from "react";
 
@@ -70,7 +68,7 @@ export default function SelectedPlace() {
 
     const openGoogleMapsHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.stopPropagation();
-        const url = `https://www.google.com/maps?q=${selectedPlace.lat},${selectedPlace.lng}`;
+        const url = `https://www.google.com/maps/place/${selectedPlace.address.replace(/ /g, "+")}`;
         window.open(url, "_blank");
     };
 
@@ -82,114 +80,76 @@ export default function SelectedPlace() {
         <div
             ref={panelRef}
             style={{
-                position: "fixed",
-                bottom: "10px",
-                left: "10px",
-                right: "10px",
-                backgroundColor: "rgba(255, 255, 255, 0.95)",
-                padding: "20px",
-                borderRadius: "16px",
-                boxShadow: "0 8px 32px rgba(0, 0, 0, 0.15)",
-                border: "1px solid rgba(0, 0, 0, 0.1)",
-                zIndex: 1000,
-                backdropFilter: "blur(10px)",
-                cursor: "pointer",
+                backgroundImage: `url("${selectedPlace.image}")`,
+                height: 179,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "contain",
+                position: "relative",
+                backgroundColor: "black"
             }}
             onClick={placeClickHandler}
         >
-            <div
+            <h3
                 style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "flex-start",
-                    gap: "16px",
+                    fontSize: 28,
+                    fontWeight: "600",
+                    color: "white",
+                    position: "absolute",
+                    bottom: 6,
+                    left: 12
                 }}
             >
-                <div style={{ flex: 1 }}>
-                    <h3
-                        style={{
-                            margin: "0 0 12px 0",
-                            fontSize: "20px",
-                            fontWeight: "600",
-                            color: "#333",
-                            lineHeight: "1.3",
-                        }}
-                    >
-                        {selectedPlace.name}
-                    </h3>
-                    <p
-                        style={{
-                            margin: "0 0 12px 0",
-                            fontSize: "16px",
-                            color: "#666",
-                            lineHeight: "1.4",
-                        }}
-                    >
-                        {selectedPlace.address}
-                    </p>
-                    <span
-                        style={{
-                            display: "inline-block",
-                            padding: "8px 12px",
-                            backgroundColor:
-                                selectedPlace.type === "restaurant"
-                                    ? "#e8f5e8"
-                                    : selectedPlace.type === "bar"
-                                        ? "#fff3e0"
-                                        : "#e3f2fd",
-                            color:
-                                selectedPlace.type === "restaurant"
-                                    ? "#2e7d32"
-                                    : selectedPlace.type === "bar"
-                                        ? "#f57c00"
-                                        : "#1976d2",
-                            borderRadius: "8px",
-                            fontSize: "14px",
-                            fontWeight: "500",
-                            textTransform: "capitalize",
-                        }}
-                    >
-                        {selectedPlace.type}
-                    </span>
+                {selectedPlace.name}
+            </h3>
+            <div style={{
+                display: "flex",
+                justifyContent: "space-between",
+                flexDirection: "column",
+                width: 48,
+                gap: 6,
+                position: "absolute",
+                top: 12,
+                right: 12
+            }}>
+                <div
+                    style={{
+                        display: "flex",
+                        height: 48,
+                        alignItems: "center",
+                        padding: "8px 12px",
+                        backgroundColor:
+                            selectedPlace.type === "restaurant"
+                                ? "#e8f5e8"
+                                : selectedPlace.type === "bar"
+                                    ? "#fff3e0"
+                                    : "#e3f2fd",
+                        color:
+                            selectedPlace.type === "restaurant"
+                                ? "#2e7d32"
+                                : selectedPlace.type === "bar"
+                                    ? "#f57c00"
+                                    : "#1976d2",
+                        borderRadius: "8px",
+                        fontSize: "14px",
+                        fontWeight: "500",
+                        textTransform: "capitalize",
+                        justifyContent: "center",
+                    }}
+                >
+                    {selectedPlace.type.toLowerCase() === "restaurant" ? "Food" : selectedPlace.type}
                 </div>
-                <div style={{ display: "flex", gap: "8px", flexShrink: 0 }}>
-                    {userEmail && (
-                        <button
-                            onClick={(event) => {
-                                event.stopPropagation();
-                                toggleVisited(selectedPlace.slug);
-                            }}
-                            style={{
-                                background: visitedPlaces[selectedPlace.slug] ? "#4caf50" : "#f5f5f5",
-                                border: "1px solid #ddd",
-                                fontSize: "16px",
-                                cursor: "pointer",
-                                color: visitedPlaces[selectedPlace.slug] ? "white" : "#333",
-                                padding: "12px",
-                                borderRadius: "12px",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                minWidth: "48px",
-                                minHeight: "48px",
-                                zIndex: 1001,
-                                flexShrink: 0,
-                                fontWeight: "500",
-                                transition: "all 0.2s ease",
-                            }}
-                            title={visitedPlaces[selectedPlace.slug] ? "Mark as not visited" : "Mark as visited"}
-                        >
-                            {visitedPlaces[selectedPlace.slug] ? "✓" : "○"}
-                        </button>
-                    )}
+                {userEmail && (
                     <button
-                        onClick={openGoogleMapsHandler}
+                        onClick={(event) => {
+                            event.stopPropagation();
+                            toggleVisited(selectedPlace.slug);
+                        }}
                         style={{
-                            background: "#4285f4",
-                            border: "none",
+                            background: visitedPlaces[selectedPlace.slug] ? "#4caf50" : "#f5f5f5",
+                            border: "1px solid #ddd",
                             fontSize: "16px",
                             cursor: "pointer",
-                            color: "white",
+                            color: visitedPlaces[selectedPlace.slug] ? "white" : "#333",
                             padding: "12px",
                             borderRadius: "12px",
                             display: "flex",
@@ -200,12 +160,36 @@ export default function SelectedPlace() {
                             zIndex: 1001,
                             flexShrink: 0,
                             fontWeight: "500",
+                            transition: "all 0.2s ease",
                         }}
-                        title="Open in Google Maps"
+                        title={visitedPlaces[selectedPlace.slug] ? "Mark as not visited" : "Mark as visited"}
                     >
-                        📍
+                        {visitedPlaces[selectedPlace.slug] ? "✓" : "○"}
                     </button>
-                </div>
+                )}
+                <button
+                    onClick={openGoogleMapsHandler}
+                    style={{
+                        background: "#4285f4",
+                        border: "none",
+                        fontSize: "16px",
+                        cursor: "pointer",
+                        color: "white",
+                        padding: "12px",
+                        borderRadius: "12px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        minWidth: "48px",
+                        minHeight: "48px",
+                        zIndex: 1001,
+                        flexShrink: 0,
+                        fontWeight: "500",
+                    }}
+                    title="Open in Google Maps"
+                >
+                    📍
+                </button>
             </div>
         </div>
     );
