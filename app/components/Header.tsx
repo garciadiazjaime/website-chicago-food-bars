@@ -22,33 +22,44 @@ export default function Header() {
     };
 
     return (
-        <header>
+        <header style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "right",
+            height: 48,
+            padding: 12,
+            gap: 12,
+        }}>
             {
                 !userEmail && (
-                    <div style={{
-                        fontSize: 20,
-                        height: 48,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "right",
-                        padding: 12
-                    }} onClick={handleSignInClick}>sign in</div>
+                    <button
+                        onClick={handleSignInClick}
+                        style={{
+                            background: "none",
+                            border: "1px solid #ddd",
+                            fontSize: "12px",
+                            cursor: "pointer",
+                            color: "#666",
+                            padding: "4px 8px",
+                            borderRadius: "6px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            transition: "all 0.2s ease",
+                            fontWeight: "500",
+                            whiteSpace: "nowrap",
+                        }}
+                        title="sign in"
+                    >
+                        sign in
+                    </button>
                 )
             }
 
             {/* Email Display - shown when email is stored */}
             {
                 userEmail && (
-                    <div
-                        style={{
-                            padding: 12,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "right",
-                            height: 48,
-                            gap: 12,
-                        }}
-                    >
+                    <>
                         <div
                             style={{
                                 fontSize: "14px",
@@ -63,7 +74,6 @@ export default function Header() {
                         </div>
                         <button
                             onClick={clearEmail}
-                            className="sign-off-btn"
                             style={{
                                 background: "none",
                                 border: "1px solid #ddd",
@@ -81,9 +91,9 @@ export default function Header() {
                             }}
                             title="Sign off"
                         >
-                            Sign Off
+                            sign off
                         </button>
-                    </div>
+                    </>
                 )
             }
         </header >

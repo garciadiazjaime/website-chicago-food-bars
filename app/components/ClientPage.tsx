@@ -6,7 +6,7 @@ import ReactGA from "react-ga4";
 import Map, { MapRef } from "@/app/components/Map";
 import LocationButton from "@/app/components/LocationButton";
 import SelectedPlace from "@/app/components/SelectedPlace";
-import EmailProvider from "@/app/components/EmailProvider";
+import LoginModal from "@/app/components/LoginModal";
 import { Place } from "@/app/support/types";
 import Header from "./Header";
 
@@ -28,15 +28,14 @@ export default function ClientPage({ places }: ClientPageProps) {
     }, [])
 
     return (
-        <EmailProvider>
-            <div style={{ height: "100vh", width: "100vw" }}>
-                <Header />
-                <div style={{ height: "64vh" }}>
-                    <Map ref={mapRef} places={places} />
-                </div>
-                <LocationButton onLocationFound={handleLocationFound} />
-                <SelectedPlace />
+        <div style={{ height: "100vh", width: "100vw" }}>
+            <LoginModal />
+            <Header />
+            <div style={{ height: "64vh" }}>
+                <Map ref={mapRef} places={places} />
             </div>
-        </EmailProvider>
+            <LocationButton onLocationFound={handleLocationFound} />
+            <SelectedPlace />
+        </div>
     );
 }

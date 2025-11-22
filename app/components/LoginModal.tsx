@@ -1,24 +1,51 @@
-"use client";
-
 import { useState } from "react";
 
-interface EmailInputProps {
-    onEmailSubmitted: (email: string) => void;
-    onClose: () => void;
-}
+import { useSelectedPlace } from "@/app/contexts/SelectedPlaceContext";
 
-export default function EmailInput({ onEmailSubmitted, onClose }: EmailInputProps) {
+
+export default function LoginModal() {
     const [email, setEmail] = useState("");
+    const { showEmailModal, setShowEmailModal, setUserEmail } = useSelectedPlace();
+
+    const handleEmailSubmitted = (email: string) => {
+        setUserEmail(email);
+        if (email) {
+            localStorage.setItem("userEmail", email);
+        } else {
+            localStorage.removeItem("userEmail");
+        }
+
+        setShowEmailModal(false);
+    };
+
+    const handleCloseModal = () => {
+        setEmail("");
+        setShowEmailModal(false);
+    };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (email.trim()) {
-            onEmailSubmitted(email.trim());
+            handleEmailSubmitted(email.trim());
         }
     };
 
-    return (
-        <div
+    return (<>
+        {showEmailModal && (
+            <div
+                style={{
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    zIndex: 1500,
+                }}
+            />
+        )}
+
+        {showEmailModal && <div
             style={{
                 position: "fixed",
                 top: "50%",
@@ -36,7 +63,7 @@ export default function EmailInput({ onEmailSubmitted, onClose }: EmailInputProp
             }}
         >
             <button
-                onClick={onClose}
+                onClick={handleCloseModal}
                 className="close-btn"
                 style={{
                     position: "absolute",
@@ -101,20 +128,7 @@ export default function EmailInput({ onEmailSubmitted, onClose }: EmailInputProp
                     log in
                 </button>
             </form>
-
-            <style jsx>{`
-                .close-btn:hover {
-                    background-color: #f0f0f0 !important;
-                }
-                
-                .email-input:focus {
-                    border-color: #4285f4 !important;
-                }
-                
-                .submit-btn:hover {
-                    background-color: #3367d6 !important;
-                }
-            `}</style>
-        </div>
+        </div>}
+    </>
     );
 }
