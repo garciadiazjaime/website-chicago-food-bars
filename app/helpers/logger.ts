@@ -1,7 +1,7 @@
-export const loggerInfo = (...args: any[]) => {
+export const loggerInfo = (...args: unknown[]) => {
   console.info("[INFO]", ...args);
 };
 
-export const loggerError = (...args: any[]) => {
+export const loggerError = (...args: unknown[]) => {
   console.error("[ERROR]", ...args);
 };
