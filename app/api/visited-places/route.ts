@@ -8,8 +8,19 @@ import {
 
 import { loggerInfo, loggerError } from "@/app/helpers/logger";
 
+const overrideNetlifyEnvVars = {
+  ...(process.env.MY_AWS_ACCESS_KEY_ID &&
+    process.env.MY_AWS_SECRET_ACCESS_KEY && {
+      credentials: {
+        accessKeyId: process.env.MY_AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.MY_AWS_SECRET_ACCESS_KEY,
+      },
+    }),
+};
+
 const dynamoClient = new DynamoDBClient({
   region: "us-east-1",
+  ...overrideNetlifyEnvVars,
 });
 
 export async function POST(request: NextRequest) {
