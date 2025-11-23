@@ -1,3 +1,4 @@
+import { loggerError } from "@/app/helpers/logger";
 
 function isPlaceVisited(placeSlug: string): boolean {
     // Get current user email from localStorage
@@ -12,7 +13,7 @@ function isPlaceVisited(placeSlug: string): boolean {
         const visitedPlaces = JSON.parse(visitedPlacesData);
         return visitedPlaces[placeSlug] === true;
     } catch (error) {
-        console.error('Error parsing visited places:', error);
+        loggerError('Error parsing visited places:', error);
         return false;
     }
 }

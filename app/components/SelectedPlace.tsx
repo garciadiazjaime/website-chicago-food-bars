@@ -1,11 +1,36 @@
 import { useSelectedPlace } from "@/app/contexts/SelectedPlaceContext";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+
+import { saveVisitedPlace, removeVisitedPlace, getVisitedPlaces } from "@/app/helpers/dynamodb";
+import { loggerError } from "@/app/helpers/logger";
 
 export default function SelectedPlace() {
-    const { userEmail, selectedPlace, clearSelectedPlace } = useSelectedPlace();
+    const { userEmail, selectedPlace, clearSelectedPlace, visitedPlaces, setVisitedPlaces } = useSelectedPlace();
     const panelRef = useRef<HTMLDivElement>(null);
     const justMountedRef = useRef(true);
-    const [visitedPlaces, setVisitedPlaces] = useState<{ [slug: string]: boolean }>({});
+
+    const fetchVisitedPlaces = async (email: string) => {
+        const visited = await getVisitedPlaces(email);
+
+        const visitedMap = visited.reduce(
+            (
+                acc: {
+                    [slug: string]: boolean;
+                },
+                slug: string
+            ) => {
+                acc[slug] = true;
+                return acc;
+            },
+            {}
+        );
+
+        setVisitedPlaces(visitedMap);
+        localStorage.setItem(
+            `visitedPlaces_${userEmail}`,
+            JSON.stringify(visitedMap)
+        );
+    };
 
     // Load visited places from localStorage
     useEffect(() => {
@@ -15,25 +40,48 @@ export default function SelectedPlace() {
                 try {
                     setVisitedPlaces(JSON.parse(saved));
                 } catch (error) {
-                    console.error('Error loading visited places:', error);
+                    loggerError("Error loading visited places:", error);
                     setVisitedPlaces({});
                 }
+            } else {
+                fetchVisitedPlaces(userEmail);
             }
         } else {
             setVisitedPlaces({});
         }
     }, [userEmail]);
 
-    const toggleVisited = (slug: string) => {
+    const toggleVisited = async (slug: string) => {
         if (!userEmail) return;
 
+        const isCurrentlyVisited = visitedPlaces[slug];
         const newVisitedPlaces = {
             ...visitedPlaces,
-            [slug]: !visitedPlaces[slug]
+            [slug]: !isCurrentlyVisited,
         };
 
+        // Update local state immediately for responsive UI
         setVisitedPlaces(newVisitedPlaces);
-        localStorage.setItem(`visitedPlaces_${userEmail}`, JSON.stringify(newVisitedPlaces));
+        localStorage.setItem(
+            `visitedPlaces_${userEmail}`,
+            JSON.stringify(newVisitedPlaces)
+        );
+
+        // Sync with DynamoDB
+        try {
+            if (!isCurrentlyVisited) {
+                // Mark as visited
+                await saveVisitedPlace(userEmail, slug);
+            } else {
+                // Mark as not visited
+                await removeVisitedPlace(userEmail, slug);
+            }
+        } catch (error) {
+            loggerError("Failed to sync visited state with DynamoDB:", error);
+            // todo: Optionally revert local state if DynamoDB operation failed
+            // setVisitedPlaces(visitedPlaces);
+            // localStorage.setItem(`visitedPlaces_${userEmail}`, JSON.stringify(visitedPlaces));
+        }
     };
 
     useEffect(() => {
@@ -46,18 +94,20 @@ export default function SelectedPlace() {
 
             // Handle clicks outside the panel
             const handleClickOutside = (event: MouseEvent) => {
-                if (!justMountedRef.current &&
+                if (
+                    !justMountedRef.current &&
                     panelRef.current &&
-                    !panelRef.current.contains(event.target as Node)) {
+                    !panelRef.current.contains(event.target as Node)
+                ) {
                     clearSelectedPlace();
                 }
             };
 
-            document.addEventListener('mousedown', handleClickOutside);
+            document.addEventListener("mousedown", handleClickOutside);
 
             return () => {
                 clearTimeout(timer);
-                document.removeEventListener('mousedown', handleClickOutside);
+                document.removeEventListener("mousedown", handleClickOutside);
             };
         }
     }, [selectedPlace, clearSelectedPlace]);
@@ -66,9 +116,14 @@ export default function SelectedPlace() {
         return null;
     }
 
-    const openGoogleMapsHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const openGoogleMapsHandler = (
+        event: React.MouseEvent<HTMLButtonElement>
+    ) => {
         event.stopPropagation();
-        const url = `https://www.google.com/maps/place/${selectedPlace.address.replace(/ /g, "+")}`;
+        const url = `https://www.google.com/maps/place/${selectedPlace.address.replace(
+            / /g,
+            "+"
+        )}`;
         window.open(url, "_blank");
     };
 
@@ -85,7 +140,7 @@ export default function SelectedPlace() {
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "contain",
                 position: "relative",
-                backgroundColor: "black"
+                backgroundColor: "black",
             }}
             onClick={placeClickHandler}
         >
@@ -96,21 +151,23 @@ export default function SelectedPlace() {
                     color: "white",
                     position: "absolute",
                     bottom: 6,
-                    left: 12
+                    left: 12,
                 }}
             >
                 {selectedPlace.name}
             </h3>
-            <div style={{
-                display: "flex",
-                justifyContent: "space-between",
-                flexDirection: "column",
-                width: 48,
-                gap: 6,
-                position: "absolute",
-                top: 12,
-                right: 12
-            }}>
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    flexDirection: "column",
+                    width: 48,
+                    gap: 6,
+                    position: "absolute",
+                    top: 12,
+                    right: 12,
+                }}
+            >
                 <div
                     style={{
                         display: "flex",
@@ -136,7 +193,9 @@ export default function SelectedPlace() {
                         justifyContent: "center",
                     }}
                 >
-                    {selectedPlace.type.toLowerCase() === "restaurant" ? "Food" : selectedPlace.type}
+                    {selectedPlace.type.toLowerCase() === "restaurant"
+                        ? "Food"
+                        : selectedPlace.type}
                 </div>
                 {userEmail && (
                     <button
@@ -145,7 +204,9 @@ export default function SelectedPlace() {
                             toggleVisited(selectedPlace.slug);
                         }}
                         style={{
-                            background: visitedPlaces[selectedPlace.slug] ? "#4caf50" : "#f5f5f5",
+                            background: visitedPlaces[selectedPlace.slug]
+                                ? "#4caf50"
+                                : "#f5f5f5",
                             border: "1px solid #ddd",
                             fontSize: "16px",
                             cursor: "pointer",
@@ -162,7 +223,11 @@ export default function SelectedPlace() {
                             fontWeight: "500",
                             transition: "all 0.2s ease",
                         }}
-                        title={visitedPlaces[selectedPlace.slug] ? "Mark as not visited" : "Mark as visited"}
+                        title={
+                            visitedPlaces[selectedPlace.slug]
+                                ? "Mark as not visited"
+                                : "Mark as visited"
+                        }
                     >
                         {visitedPlaces[selectedPlace.slug] ? "✓" : "○"}
                     </button>

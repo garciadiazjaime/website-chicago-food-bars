@@ -3,6 +3,10 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 import { Place } from "@/app/support/types";
 
+interface VisitedPlaces {
+    [slug: string]: boolean;
+}
+
 interface SelectedPlaceContextType {
     selectedPlace: Place | null;
     setSelectedPlace: (place: Place | null) => void;
@@ -12,6 +16,9 @@ interface SelectedPlaceContextType {
     setUserEmail: (email: string) => void;
     showEmailModal: boolean;
     setShowEmailModal: (show: boolean) => void;
+
+    visitedPlaces: VisitedPlaces;
+    setVisitedPlaces: (places: VisitedPlaces) => void;
 }
 
 const SelectedPlaceContext = createContext<SelectedPlaceContextType | undefined>(undefined);
@@ -20,6 +27,7 @@ export function SelectedPlaceProvider({ children }: { children: ReactNode }) {
     const [selectedPlace, setSelectedPlace] = useState<Place | null>(null);
     const [userEmail, setUserEmail] = useState<string>("");
     const [showEmailModal, setShowEmailModal] = useState<boolean>(false);
+    const [visitedPlaces, setVisitedPlaces] = useState<VisitedPlaces>({});
 
     const clearSelectedPlace = () => {
         setSelectedPlace(null);
@@ -35,7 +43,10 @@ export function SelectedPlaceProvider({ children }: { children: ReactNode }) {
                 userEmail,
                 setUserEmail,
                 showEmailModal,
-                setShowEmailModal
+                setShowEmailModal,
+
+                visitedPlaces,
+                setVisitedPlaces,
             }}
         >
             {children}
